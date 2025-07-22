@@ -22,6 +22,7 @@ pipeline {
                     ]) {
                         sh '''
                             az login --service-principal -u $SP_CLIENT_ID -p $SP_CLIENT_SECRET --tenant $TENANT_ID
+                            az acr login --name $ACR_NAME
                             docker build -t $REPOSITORY:$APP_VERSION$BUILD_ID ./azure-vote/
                             docker tag $REPOSITORY:$APP_VERSION$BUILD_ID $ACR_NAME.azurecr.io/$REPOSITORY:$APP_VERSION$BUILD_ID
                             docker push $ACR_NAME.azurecr.io/$REPOSITORY:$APP_VERSION$BUILD_ID
