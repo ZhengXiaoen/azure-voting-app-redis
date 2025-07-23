@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: test
   name: azure-vote-back
 spec:
   replicas: 1
@@ -27,6 +28,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: test
   name: azure-vote-back
 spec:
   ports:
@@ -37,6 +39,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: test
   name: azure-vote-front
 spec:
   replicas: 1
@@ -72,6 +75,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: test
   name: azure-vote-front
 spec:
   type: LoadBalancer
